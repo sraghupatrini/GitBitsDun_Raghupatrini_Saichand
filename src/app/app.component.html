@@ -1,0 +1,23 @@
+<div class="header">
+  <h1>TODO</h1>
+
+  <input type="text" placeholder="Enter New Task" (change)="onChangeEvent($event)" #task />
+  <br>
+  <br>
+  <button (click)="addTask(task.value)">Add</button>
+
+
+
+  <ul *ngFor="let item of list"> 
+
+    <li [ngStyle]="{'color':item.id === this.random.id ?'red' : 'black' }"> <span>
+      <i class="fa fa-arrow-up fa-lg" aria-hidden="true"></i><mat-checkbox color="warn" (click)="priority(item.id)" class="example-margin"></mat-checkbox>&nbsp;
+      <i class="fa fa-arrow-down fa-lg" aria-hidden="true"></i><mat-checkbox color="primary" (click)="priority(item.id)" class="example-margin"></mat-checkbox>
+      </span> {{item.name | uppercase}} <button (click)="removeTask(item.id)">Remove</button> <span
+        *ngIf="item.id === this.random.id"> &nbsp; {{display}}</span>
+    </li>
+
+  </ul>
+
+  <button *ngIf="randomBoolean" (click)="selectRandom()">Git bits dun</button>
+</div>
